@@ -55,10 +55,10 @@ public class App extends JFrame {
 			JButton jbexit = new JButton("");
 			jbexit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					try {
+
 						dispose();
-						Thread.sleep(1500);
-					} catch (Exception e) {}
+						//Thread.sleep(1500);
+
 					System.exit(0);
 				}
 			});
