@@ -77,22 +77,22 @@ public class App extends JFrame {
 			
 		/*PANEL DEL NORTE, TIENE DRAWNER ON SCREEN Y ES DONDE IRA LA INFO DE USUARIO*/
 			
-		JPanel jpNorte = new JPanel(null);								
-		jpNorte.addMouseListener(new MouseAdapter() {
+		JPanel jpHeader = new JPanel(null);								
+		jpHeader.addMouseListener(new MouseAdapter() {
 			@Override
 		public void mousePressed(MouseEvent a) {
 				x=a.getX(); y=a.getY();
 			}
 		});
-		jpNorte.addMouseMotionListener(new MouseMotionAdapter() {
+		jpHeader.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent a) {
 				int xx=a.getXOnScreen(), yy=a.getYOnScreen();
 				setLocation(xx-x,yy-y);
 			}
 		});
-		jpNorte.setBounds(2, 3, 1161, 100);
-		contentPane.add(jpNorte);
+		jpHeader.setBounds(2, 3, 1161, 100);
+		contentPane.add(jpHeader);
 			
 			/**********************************************************************/
 			
