@@ -15,16 +15,15 @@ public class App extends JFrame {
 
 	private JPanel contentPane;
 	protected int x, y;
+	
+	
 	public static void main(String[] args) {
-
 		App frame = new App();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);			
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public App() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,12 +31,20 @@ public class App extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(60, 179, 113)));
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		
+		/*PANEL DEL CENTRO, EN ESTE IRA PRACTOCAMENTE TODO, ESTE ES EL PANEL QUE ESTA SIEMPRE EN MOVIMIENTO, OSEA CAMBIA CRECUENTEMENTE.*/
 		
 		JPanel jpCentro = new JPanel(null);
 		jpCentro.setBounds(312, 104, 851, 559);
 		contentPane.add(jpCentro);
+		
+		/**********************************************************************/
+
+		
+		/* PANEL DE DASHBOARD ENCARGADO DE MANTENER LOS ICONOS Y FUNCIONES PRINCIPALES DEL APP*/
 		
 		JPanel jpdashboard = new JPanel();
 		jpdashboard.setBackground(new Color(0,150,36));
@@ -45,30 +52,35 @@ public class App extends JFrame {
 		contentPane.add(jpdashboard);
 		jpdashboard.setLayout(null);
 		
-		JButton jbexit = new JButton("");
-		jbexit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					dispose();
-					Thread.sleep(1500);
-				} catch (Exception e) {}
-				System.exit(0);
-			}
-		});
-		jbexit.setToolTipText("Cerrar app");
-		jbexit.setIcon(new ImageIcon(App.class.getResource("/assets/exit.png")));
-		jbexit.setFocusable(false);
-		jbexit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		jbexit.setBorderPainted(false);
-		jbexit.setContentAreaFilled(false);
-		jbexit.setBorder(null);
-		jbexit.setBounds(10, 608, 43, 42);
-		jpdashboard.add(jbexit);
-		
-		JPanel jpNorte = new JPanel(null);
+			JButton jbexit = new JButton("");
+			jbexit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					try {
+						dispose();
+						Thread.sleep(1500);
+					} catch (Exception e) {}
+					System.exit(0);
+				}
+			});
+			jbexit.setToolTipText("Cerrar app");
+			jbexit.setIcon(new ImageIcon(App.class.getResource("/assets/exit.png")));
+			jbexit.setFocusable(false);
+			jbexit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			jbexit.setBorderPainted(false);
+			jbexit.setContentAreaFilled(false);
+			jbexit.setBorder(null);
+			jbexit.setBounds(10, 608, 43, 42);
+			jpdashboard.add(jbexit);
+			
+		/**********************************************************************/
+
+			
+		/*PANEL DEL NORTE, TIENE DRAWNER ON SCREEN Y ES DONDE IRA LA INFO DE USUARIO*/
+			
+		JPanel jpNorte = new JPanel(null);								
 		jpNorte.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mousePressed(MouseEvent a) {
+		public void mousePressed(MouseEvent a) {
 				x=a.getX(); y=a.getY();
 			}
 		});
@@ -81,6 +93,8 @@ public class App extends JFrame {
 		});
 		jpNorte.setBounds(2, 3, 1161, 100);
 		contentPane.add(jpNorte);
-		jpNorte.setLayout(null);
+			
+			/**********************************************************************/
+			
 	}
 }
