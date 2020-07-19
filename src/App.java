@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class App extends JFrame {
 
@@ -62,6 +65,11 @@ public class App extends JFrame {
 					System.exit(0);
 				}
 			});
+			
+			JLabel jlLogo = new JLabel("");
+			jlLogo.setIcon(new ImageIcon(App.class.getResource("/assets/log_ajustado.png")));
+			jlLogo.setBounds(10, 10, 62, 62);
+			jpdashboard.add(jlLogo);
 			jbexit.setToolTipText("Cerrar app");
 			jbexit.setIcon(new ImageIcon(App.class.getResource("/assets/exit.png")));
 			jbexit.setFocusable(false);
@@ -93,6 +101,27 @@ public class App extends JFrame {
 		});
 		jpHeader.setBounds(2, 3, 1161, 100);
 		contentPane.add(jpHeader);
+		
+		JLabel jlNameUser = new JLabel("AB");
+		jlNameUser.setToolTipText("Informacion de usuario");
+		jlNameUser.setForeground(new Color(169, 169, 169));
+		jlNameUser.setHorizontalAlignment(SwingConstants.CENTER);
+		jlNameUser.setFont(new Font("Arial", Font.BOLD, 20));
+		jlNameUser.setFocusable(false);
+		jlNameUser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		jlNameUser.setBounds(1079, 33, 62, 34);
+		jpHeader.add(jlNameUser);
+		
+		JButton jbinfoUser = new JButton("");
+		jbinfoUser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		jbinfoUser.setIcon(new ImageIcon(App.class.getResource("/assets/circle.png")));
+		jbinfoUser.setToolTipText("Informacion de usuario");
+		jbinfoUser.setFocusable(false);
+		jbinfoUser.setContentAreaFilled(false);
+		jbinfoUser.setBorderPainted(false);
+		jbinfoUser.setBorder(null);
+		jbinfoUser.setBounds(1080, 20, 62, 61);
+		jpHeader.add(jbinfoUser);
 			
 			/**********************************************************************/
 			
