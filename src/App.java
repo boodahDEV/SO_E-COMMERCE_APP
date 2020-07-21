@@ -30,7 +30,7 @@ public class App extends JFrame {
 	public App() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1165, 665);
+		setBounds(100, 100, 1332, 800);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(60, 179, 113)));
@@ -41,7 +41,7 @@ public class App extends JFrame {
 		/*PANEL DEL CENTRO, EN ESTE IRA PRACTOCAMENTE TODO, ESTE ES EL PANEL QUE ESTA SIEMPRE EN MOVIMIENTO, OSEA CAMBIA CRECUENTEMENTE.*/
 		
 		JPanel jpCentro = new JPanel(null);
-		jpCentro.setBounds(312, 104, 851, 559);
+		jpCentro.setBounds(76, 77, 1253, 720);
 		contentPane.add(jpCentro);
 		
 		/**********************************************************************/
@@ -51,7 +51,7 @@ public class App extends JFrame {
 		
 		JPanel jpdashboard = new JPanel();
 		jpdashboard.setBackground(new Color(0,150,36));
-		jpdashboard.setBounds(2, 2, 309, 661);
+		jpdashboard.setBounds(2, 2, 72, 796);
 		contentPane.add(jpdashboard);
 		jpdashboard.setLayout(null);
 		
@@ -68,7 +68,7 @@ public class App extends JFrame {
 			
 			JLabel jlLogo = new JLabel("");
 			jlLogo.setIcon(new ImageIcon(App.class.getResource("/assets/log_ajustado.png")));
-			jlLogo.setBounds(10, 10, 62, 62);
+			jlLogo.setBounds(5, 5, 62, 62);
 			jpdashboard.add(jlLogo);
 			jbexit.setToolTipText("Cerrar app");
 			jbexit.setIcon(new ImageIcon(App.class.getResource("/assets/exit.png")));
@@ -77,7 +77,7 @@ public class App extends JFrame {
 			jbexit.setBorderPainted(false);
 			jbexit.setContentAreaFilled(false);
 			jbexit.setBorder(null);
-			jbexit.setBounds(10, 608, 43, 42);
+			jbexit.setBounds(14, 745, 43, 42);
 			jpdashboard.add(jbexit);
 			
 		/**********************************************************************/
@@ -99,20 +99,22 @@ public class App extends JFrame {
 				setLocation(xx-x,yy-y);
 			}
 		});
-		jpHeader.setBounds(2, 3, 1161, 100);
+		jpHeader.setBounds(2, 3, 1327, 73);
 		contentPane.add(jpHeader);
 		
 		JLabel jlNameUser = new JLabel("AB");
+		jlNameUser.setBounds(1241, 25, 62, 34);
+		jpHeader.add(jlNameUser);
 		jlNameUser.setToolTipText("Informacion de usuario");
 		jlNameUser.setForeground(new Color(169, 169, 169));
 		jlNameUser.setHorizontalAlignment(SwingConstants.CENTER);
 		jlNameUser.setFont(new Font("Arial", Font.BOLD, 20));
 		jlNameUser.setFocusable(false);
 		jlNameUser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		jlNameUser.setBounds(1079, 33, 62, 34);
-		jpHeader.add(jlNameUser);
 		
 		JButton jbinfoUser = new JButton("");
+		jbinfoUser.setBounds(1242, 12, 62, 61);
+		jpHeader.add(jbinfoUser);
 		jbinfoUser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		jbinfoUser.setIcon(new ImageIcon(App.class.getResource("/assets/circle.png")));
 		jbinfoUser.setToolTipText("Informacion de usuario");
@@ -120,8 +122,6 @@ public class App extends JFrame {
 		jbinfoUser.setContentAreaFilled(false);
 		jbinfoUser.setBorderPainted(false);
 		jbinfoUser.setBorder(null);
-		jbinfoUser.setBounds(1080, 20, 62, 61);
-		jpHeader.add(jbinfoUser);
 			
 			/**********************************************************************/
 			
