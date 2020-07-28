@@ -1,0 +1,47 @@
+<!-- <div class="row">
+    <div class="col-md-5 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Sign In
+            </div>
+            <div class="card-body">
+                <form (submit)="signin()">
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required autofocus [(ngModel)]="user.email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required [(ngModel)]="user.password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="card col-md-4 mx-auto border-primary">
+  <article class="card-body">
+    <a href="" class="float-right btn btn-outline-primary">Registrate</a>
+    <h4 class="card-title mb-4 mt-1">Inicia sesion</h4>
+    <form (submit)="signin()">
+      <div class="form-group">
+        <label>Correo</label>
+        <input name="" class="form-control" name="email" placeholder="Ingresa tu correo" type="email" required autofocus
+          [(ngModel)]="user.email">
+      </div> <!-- form-group// -->
+      <div class="form-group">
+        <!-- <a class="float-right" href="#">Forgot?</a> -->
+        <label>Contraseña</label>
+        <input class="form-control" name="password" placeholder="******" type="password" minlength="8" required
+          [(ngModel)]="user.password">
+      </div> <!-- form-group// -->
+      <div class="form-group">
+        <div class="checkbox">
+          <!-- <label> <input type="checkbox"> Save password </label> -->
+        </div> <!-- checkbox .// -->
+      </div> <!-- form-group// -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Iniciar sesion </button>
+      </div> <!-- form-group// -->
+    </form>
+  </article>
+</div>

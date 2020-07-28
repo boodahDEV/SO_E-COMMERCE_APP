@@ -1,0 +1,69 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <!-- Insert header here -->
+  <div class="col-md-5 row header-container">
+    
+    <div class="col-md-1">
+      <div class="logo-container">
+        <a class="logo" style="text-decoration:none;cursor:pointer;" (click)="toggle()"> <img src="../assets/log_ajustado.png" alt="Logo SO_ECOMMERCE"></a> 
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <button nbButton ghost size="giant"> <a style="text-decoration:none;cursor:pointer;" routerLink="/dashboard">SO! E-COMMERCE</a></button>
+      <button nbButton size="giant" shape="round" ghost (click)="addMenuItem()" nbPopover="Añadir baúl" nbPopoverTrigger="hint"><nb-icon icon="plus-outline" [options]="{ animation: { type: 'zoom' } }"></nb-icon></button>
+      <button nbButton size="giant" shape="round" ghost (click)="redirect('chest')" nbPopover="Ver baúles" nbPopoverTrigger="hint"><nb-icon icon="unlock-outline" [options]="{ animation: { type: 'zoom' } }"></nb-icon></button>
+    </div>
+
+  </div>
+
+
+  <div class="col-md-4 offset-5 row header-container">
+    <div class="col-md-4">
+      <nb-actions size="small">
+        <nb-action class="control-item">
+          <nb-search type="rotate-layout"></nb-search>
+        </nb-action>
+        
+        <nb-action class="user-action">
+          <nb-user [nbContextMenu]="it"
+            name='faustino'
+            title='faustino'
+            nbContextMenuTag="my-context-menu">
+          </nb-user>
+        </nb-action>
+      </nb-actions>
+    </div>
+    <div class="col-md-1">
+      <button nbButton ghost status="danger"><nb-icon icon="log-out-outline"></nb-icon></button>
+    </div>
+
+  </div>
+  
+
+  </nb-layout-header>
+
+
+  <!-- <nb-sidebar class="menu-sidebar" tag="menu" responsive>
+    <ng-content select="nb-menu"></ng-content>
+  </nb-sidebar> -->
+
+
+  <nb-sidebar class="menu-sidebar">
+    <nb-menu tag="menu" [items]="items" autoCollapse="true">
+    </nb-menu>
+  </nb-sidebar>
+
+
+  <nb-layout-column>
+      <router-outlet></router-outlet> 
+  </nb-layout-column>
+
+
+  <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+    <div class="col-md-12 col-xs-12">
+      <span class="col-md-6 created-by">Creado por <b><a style="text-decoration:none;cursor:pointer;" href="https://github.com/boodahDEV" > boodah </a></b> 2020</span>
+    </div>
+  </nb-layout-footer>
+</nb-layout>
