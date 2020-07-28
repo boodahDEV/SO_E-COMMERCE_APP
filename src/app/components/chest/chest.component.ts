@@ -30,7 +30,7 @@ export class ChestComponent implements OnInit {
   }//constructor
 
   ngOnInit(): void {
-    this.data$ = this.app.getData$();
+    // this.data$ = this.app.getData$();
     this.data$.subscribe((res) => {
       this.array_new_chest.push(res);
     });

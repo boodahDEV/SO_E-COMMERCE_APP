@@ -9,6 +9,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { ChestComponent } from "./components/chest/chest.component";
 import { PrivateChestsComponent } from "./components/private-chests/private-chests.component";
 import { ChestInfoComponent } from './components/chest-info/chest-info.component';
+import { NbLoginComponent } from '@nebular/auth';
 
 const routes: Routes = [
   {
@@ -26,19 +27,19 @@ const routes: Routes = [
     component:DashboardComponent
   },
   {
-    path:'chest',
+    path:'product',
     component:ChestComponent,
     // canActivate:[AuthGuard]
   },
   {
-    path:'chestInfo',
+    path:'category',
     component:ChestInfoComponent,
   },
-  {
-    path:'private-chest',
-    component:PrivateChestsComponent,
-    canActivate:[AuthGuard]
-  },
+  // {
+  //   path:'private-chest',
+  //   component:PrivateChestsComponent,
+  //   canActivate:[AuthGuard]
+  // },
   {
     path:'signup',
     component:SignupComponent

@@ -1,31 +1,39 @@
-import { Component } from "@angular/core";
-import { AuthService } from "./services/auth.service";
-import { NbSidebarService, NbMenuItem, NbMenuService } from "@nebular/theme";
-import { MENU_ITEMS } from "./sidebar-menu";
-import Swal from "sweetalert2";
-import Notiflix from "notiflix";
-import { Router } from "@angular/router";
-import { Subject, Observable } from "rxjs";
+import { Component, TemplateRef,  } from "@angular/core";
+import { MENU_ITEMS } from './sidebar-menu';
+import Swal from 'sweetalert2';
+import { NbMenuItem, NbMenuService, NbSidebarService, NbDialogService } from '@nebular/theme';
+import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
+
 export class AppComponent {
   items = MENU_ITEMS;
   private local$ = new Subject<any>();
   count = localStorage.length + 1;
-  it = [
+  user: any;
+  submitted: boolean;
+  status_login: Boolean; //ESTE CAMPO CONTROLA LAS OPCIONES DE SESION
+  opciones = [
     { title: 'Configurar', icon: 'settings-2-outline' },
     { title: 'Salir',  icon: 'log-out-outline', },
-  ];
+  ]; //este campo mantiene las opciones basicas de configuracion del usuario
 
-  constructor(
+
+  constructor( 
     private menuService: NbMenuService,
     private sidebarService: NbSidebarService,
-    private router: Router
-  ) {
+    private router: Router,
+    private dialogService: NbDialogService
+   ) {
+    this.status_login=false;
+
+    //ESTO BUSCA EN EL MENUITEMS EL TITULO EN ESPECIFICO Y CARGA LO QUE ESTA EN EL LOCAL HOST
+    //CON UNA LLAVE EN ESPECIFICO, A DICHO MENUITEMS
     this.items.forEach((res) => {
       if (res.title === "Baules") {
         if (res.children) {
@@ -45,12 +53,18 @@ export class AppComponent {
     });
   }
 
-  toggle() {
+
+  public toggle() {
     this.sidebarService.toggle(true);
     return false;
-  }
+  }// simplemente controla el sidebar, lo abre y lo cierra
 
-  async addMenuItem() {
+  public open(dialog: TemplateRef<any>) {
+    // this.dialogService.open(dialog, { context: 'this is some additional data passed to dialog',hasBackdrop:true }); // este es prueba con datos desde el ts
+    this.dialogService.open(dialog, {hasBackdrop:true }); // este es prueba con datos desde el ts
+  } // este metodo controla el patron de inicio de sesion
+
+  public async addMenuItem() {
     const { value: chestName } = await Swal.fire({
       title: "Nombre del baúl",
       input: "text",
@@ -101,4 +115,6 @@ export class AppComponent {
   getData$(): Observable<any> {
     return this.local$.asObservable();
   }
+
+
 }

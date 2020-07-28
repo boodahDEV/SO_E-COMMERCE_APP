@@ -16,10 +16,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { PrivateChestsComponent } from './components/private-chests/private-chests.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbCardModule, NbIconModule, NbButtonModule, NbUserModule, NbActionsModule, NbSearchModule, NbContextMenuModule, NbSidebarModule, NbSidebarService, NbMenuModule, NbSelectModule, NbPopoverModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbCardModule, NbIconModule, NbButtonModule, NbUserModule, NbActionsModule, NbSearchModule, NbContextMenuModule, NbSidebarModule, NbSidebarService, NbMenuModule, NbSelectModule, NbPopoverModule, NbAlertModule, NbInputModule, NbDialogModule, NbFormFieldModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChestConfigComponent } from './components/chest-config/chest-config.component';
 import { ChestInfoComponent } from './components/chest-info/chest-info.component';
+import { NbAuthModule } from '@nebular/auth';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { ChestInfoComponent } from './components/chest-info/chest-info.component
     SettingComponent,
     PrivateChestsComponent,
     ChestConfigComponent,
-    ChestInfoComponent
+    ChestInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,11 +42,15 @@ import { ChestInfoComponent } from './components/chest-info/chest-info.component
     HttpClientModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'dark' }),
+    NbDialogModule.forRoot(),
     NbCardModule,
     NbLayoutModule,
     NbIconModule,
+    NbAuthModule,
     NbSelectModule,
+    NbFormFieldModule,
     NbPopoverModule,
+    NbInputModule,
     NbUserModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),

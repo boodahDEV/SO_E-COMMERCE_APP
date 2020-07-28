@@ -25,7 +25,9 @@
             ],
             "styles": [
               "./node_modules/@nebular/theme/styles/prebuilt/dark.css",
-              "src/styles.css"
+              "./node_modules/@nebular/auth/styles/_globals.scss",
+              "src/styles.css",
+              "src/app/styles/themes.scss"
             ],
             "scripts": []
           },
