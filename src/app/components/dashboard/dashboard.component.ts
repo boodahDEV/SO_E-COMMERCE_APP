@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +9,13 @@ import { NbSidebarService } from '@nebular/theme';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private taskservice: TasksService) { }
 
   ngOnInit(): void {
+  }
+
+  onClick(){
+    // this.taskservice.connect_database_oracle();
   }
 
 }

@@ -4,74 +4,39 @@
     <div class="col-md-5 row header-container">
       <div class="col-md-1">
         <div class="logo-container">
-          <a
-            class="logo"
-            style="text-decoration: none; cursor: pointer;"
-            (click)="toggle()"
-          >
-            <img src="../assets/log_ajustado.png" alt="Logo SO_ECOMMERCE"
-          /></a>
+          <a class="logo" style="text-decoration: none; cursor: pointer;" (click)="toggle()">
+            <img src="../assets/log_ajustado.png" alt="Logo SO_ECOMMERCE" /></a>
         </div>
       </div>
 
       <div class="col-md-6">
         <button nbButton ghost size="giant">
-          <a
-            style="text-decoration: none; cursor: pointer;"
-            routerLink="/dashboard"
-            >SO! E-COMMERCE</a
-          >
+          <a style="text-decoration: none; cursor: pointer;" routerLink="/dashboard">SO! E-COMMERCE</a>
         </button>
-        <button
-          nbButton
-          size="giant"
-          shape="round"
-          ghost
-          nbPopoverPlacement="bottom"
-          (click)="addMenuItem()"
-          nbPopover="Añadir"
-          nbPopoverTrigger="hint"
-        >
-          <nb-icon
-            icon="plus-outline"
-            [options]="{ animation: { type: 'zoom' } }"
-          ></nb-icon>
+        <button nbButton size="giant" shape="round" ghost nbPopoverPlacement="bottom" (click)="addMenuItem()"
+          nbPopover="Añadir" nbPopoverTrigger="hint">
+          <nb-icon icon="plus-outline" [options]="{ animation: { type: 'zoom' } }"></nb-icon>
         </button>
-        <button
-          nbButton
-          size="giant"
-          shape="round"
-          ghost
-          nbPopoverPlacement="bottom"
-          (click)="redirect('chest')"
-          nbPopover="Ver inventario"
-          nbPopoverTrigger="hint"
-        >
-          <nb-icon
-            icon="unlock-outline"
-            [options]="{ animation: { type: 'zoom' } }"
-          ></nb-icon>
+        <button nbButton size="giant" shape="round" ghost nbPopoverPlacement="bottom" (click)="redirect('chest')"
+          nbPopover="Ver inventario" nbPopoverTrigger="hint">
+          <nb-icon icon="unlock-outline" [options]="{ animation: { type: 'zoom' } }"></nb-icon>
         </button>
       </div>
     </div>
 
-    <div class="col-md-4 offset-5">
+    <div class="col-md-4 offset-3">
       <!-- DIV PARA EL CASO QUE YA ESTE LOGEADO EL USUARIO!-->
 
-      <div class="row header-container" *ngIf="status_login">
+      <div class="row header-container justify-content-end" *ngIf="status_login">
         <div class="col-md-4">
           <nb-actions size="small">
             <nb-action class="control-item">
-              <nb-search type="rotate-layout"></nb-search>
+              <nb-search nbPopover="Iniciar sesion" nbPopoverPlacement="bottom" nbPopoverTrigger="hint" size="giant"
+                type="rotate-layout"></nb-search>
             </nb-action>
 
             <nb-action class="user-action">
-              <nb-user
-                [nbContextMenu]="opciones"
-                name="faustino"
-                title="faustino"
-                nbContextMenuTag="my-context-menu"
-              >
+              <nb-user [nbContextMenu]="opciones" name="faustino" title="faustino" nbContextMenuTag="my-context-menu">
               </nb-user>
             </nb-action>
           </nb-actions>
@@ -85,19 +50,16 @@
       </div>
       <!--FIN DEL DIV PARA EL CASO QUE YA ESTE LOGEADO EL USUARIO!-->
 
-      <div class="row justify-content-end col-7" *ngIf="!status_login">
+      <div class="row justify-content-end col-12" *ngIf="!status_login">
         <!-- DIV PARA EL CASO QUE ESTE SOLO DE VISITA, ETC -->
-        <button
-          nbButton
-          ghost
-          shape="round"
-          status="success"
-          nbPopover="Iniciar sesion"
-          nbPopoverPlacement="bottom"
-          nbPopoverTrigger="hint"
-          size="giant"
-          (click)="open(login)"
-        >
+        <nb-actions>
+          <nb-action class="control-item">
+            <nb-search nbPopover="Iniciar sesion" nbPopoverPlacement="bottom" nbPopoverTrigger="hint" size="giant"
+              type="rotate-layout"></nb-search>
+          </nb-action>
+        </nb-actions>
+        <button nbButton ghost shape="round" status="success" nbPopover="Iniciar sesion" nbPopoverPlacement="bottom"
+          nbPopoverTrigger="hint" size="giant" (click)="open(login)">
           <nb-icon icon="log-in-outline"></nb-icon>
         </button>
       </div>
@@ -116,22 +78,15 @@
   </nb-layout-column>
 
 
-  
+
   <nb-layout-footer fixed>
     <!-- Insert footer here -->
     <div class="col-md-12 col-xs-12">
-      <span class="col-md-6 created-by"
-        >Creado por
-        <b
-          ><a
-            style="text-decoration: none; cursor: pointer;"
-            href="https://github.com/boodahDEV"
-          >
+      <span class="col-md-6 created-by">Creado por
+        <b><a style="text-decoration: none; cursor: pointer;" href="https://github.com/boodahDEV">
             boodah
-          </a></b
-        >
-        2020</span
-      >
+          </a></b>
+        2020</span>
     </div>
   </nb-layout-footer>
 </nb-layout>
