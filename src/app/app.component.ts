@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { NbMenuItem, NbMenuService, NbSidebarService, NbDialogService } from '@nebular/theme';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { SigninComponent } from './components/signin/signin.component';
 
 @Component({
   selector: "app-root",
@@ -18,6 +19,8 @@ export class AppComponent {
   user: any;
   submitted: boolean;
   status_login: Boolean; //ESTE CAMPO CONTROLA LAS OPCIONES DE SESION
+  changeClose: boolean
+
   opciones = [
     { title: 'Configurar', icon: 'settings-2-outline' },
     { title: 'Salir',  icon: 'log-out-outline', },
@@ -59,9 +62,9 @@ export class AppComponent {
     return false;
   }// simplemente controla el sidebar, lo abre y lo cierra
 
-  public open(dialog: TemplateRef<any>) {
+  public open() {
     // this.dialogService.open(dialog, { context: 'this is some additional data passed to dialog',hasBackdrop:true }); // este es prueba con datos desde el ts
-    this.dialogService.open(dialog, {hasBackdrop:true }); // este es prueba con datos desde el ts
+    const dialogRef =  this.dialogService.open(SigninComponent, {hasBackdrop:true, closeOnBackdropClick:true}); // este es prueba con datos desde el ts
   } // este metodo controla el patron de inicio de sesion
 
   public async addMenuItem() {

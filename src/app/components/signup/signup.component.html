@@ -1,34 +1,102 @@
-<div class="row">
-    <div class="col-md-6 mx-auto">
-        <div class="card border-primary">
-            <div class="card-header">
-                Registrarse 
-            </div>
-            <div class="card-body">
-                <form (submit)="signup()">
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <input type="text" name="firstname" class="form-control" placeholder="Nombre" required autofocus [(ngModel)]="user.firstname">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" name="lastname" class="form-control" placeholder="Aplellido" required [(ngModel)]="user.lastname">
-                        </div>
+<nb-card>
+    <nb-card-body>
+        <br>
+        <img src="./../../../assets/logo.png" width="" height="" class="center" />
+        <div class="row col-md-12 justify-content-center">
+
+            <h1 id="title" class="title">Registrase</h1>
+            <p class="sub-title">¡Hola! Registrase con sus datos correcto es fundamental.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-7 align-self-center">
+                <form (ngSubmit)="signup()" #form="ngForm" aria-labelledby="title">
+                    <div class="form-control-group">
+                        <label class="label" for="input-name">Nombre completo:</label>
+                        <input nbInput [(ngModel)]="user.fullName" #fullName="ngModel" id="input-name" name="fullName"
+                            placeholder="Ingrese su nombre completo" autofocus shape="semi-round" fullWidth
+                            fieldSize="large"
+                            [status]="fullName.dirty ? (fullName.invalid  ? 'danger' : 'success') : ''" [required]=true
+                            [minlength]=6 [attr.aria-invalid]="fullName.invalid && fullName.touched ? true : null">
+                        <ng-container *ngIf="fullName.invalid && fullName.touched">
+                            <p class="caption status-danger" *ngIf="fullName.errors?.required">
+                                Se requiere nombre completo!
+                            </p>
+                            <p class="caption status-danger"
+                                *ngIf="fullName.errors?.minlength || fullName.errors?.maxlength">
+                                Su nombre completo por lo menos debe tener un mayor de 5 caracteres.
+                            </p>
+                        </ng-container>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Correo" required [(ngModel)]="user.email">
+                    <br>
+                    <div class="form-control-group">
+                        <label class="label" for="input-email">Correo:</label>
+                        <input nbInput [(ngModel)]="user.email" #email="ngModel" id="input-email" name="email"
+                            pattern=".+@.+..+" placeholder="Ingresa su correo" fullWidth shape="semi-round"
+                            fieldSize="large" [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
+                            [required]=true [attr.aria-invalid]="email.invalid && email.touched ? true : null">
+                        <ng-container *ngIf="email.invalid && email.touched">
+                            <p class="caption status-danger" *ngIf="email.errors?.required">
+                                ¡Correo electronico es requerido!
+                            </p>
+                            <p class="caption status-danger" *ngIf="email.errors?.pattern">
+                                ¡El correo electrónico debe ser el verdadero!
+                            </p>
+                        </ng-container>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Contraseña" required [(ngModel)]="user.password">
+                    <br>
+                    <div class="form-control-group">
+                        <label class="label" for="input-password">Contraseña:</label>
+                        <input nbInput [(ngModel)]="user.password" #password="ngModel" type="password"
+                            id="input-password" name="password" placeholder="Ingresa su contraseña" fullWidth
+                            shape="semi-round" fieldSize="large"
+                            [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : ''" [required]=true
+                            [minlength]=8 [attr.aria-invalid]="password.invalid && password.touched ? true : null">
+                        <ng-container *ngIf="password.invalid && password.touched">
+                            <p class="caption status-danger" *ngIf="password.errors?.required">
+                                ¡Se requiere contraseña!
+                            </p>
+                            <p class="caption status-danger"
+                                *ngIf="password.errors?.minlength || password.errors?.maxlength">
+                                La contraseña debe contener por lo menos 8 a carácter.
+                            </p>
+                        </ng-container>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="ver-pass" class="form-control" placeholder="Verifica contraseña" required [(ngModel)]="verifica">
+                    <br>
+                    <div class="form-control-group">
+                        <label class="label" for="input-re-password">Confirmar contraseña</label>
+                        <input nbInput [(ngModel)]="user.confirmPassword" #rePass="ngModel" type="password"
+                            id="input-re-password" name="rePass" shape="semi-round" placeholder="Confirmar contraseña"
+                            fullWidth fieldSize="large"
+                            [status]="rePass.dirty ? (rePass.invalid || password.value != rePass.value  ? 'danger' : 'success') : ''"
+                            [required]=true [attr.aria-invalid]="rePass.invalid && rePass.touched ? true : null">
+                        <ng-container *ngIf="rePass.invalid && rePass.touched">
+
+                            <p class="caption status-danger" *ngIf="rePass.errors?.required">
+                                Se requiere confirmación de contraseña!
+                            </p>
+                            <p class="caption status-danger"
+                                *ngIf="password.value != rePass.value && !rePass.errors?.required">
+                                La contraseña no coincide con la contraseña de confirmación.
+                                <!-- No se porque no valida esto-->
+                            </p>
+                        </ng-container>
                     </div>
-                    <div class="form-group" *ngIf="labelErrorVerify">
-                        <span style="color: red;"> Error, las contraseñas deben coincidir </span>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    <br>
+                    <button nbButton fullWidth status="success" shape="semi-round" size="large"
+                        [disabled]="submitted || !form.valid || password.value != rePass.value"
+                        [class.btn-pulse]="submitted">
+                        Registrase
+                    </button>
+
                 </form>
+                <br>
+                <section class="another-action" aria-label="Register">
+                    ¿Ya tienes una cuenta? <a class="text-link" style="cursor: pointer"
+                        (click)="redirectToLogin()">Iniciar sesión</a>
+                </section>
+                <br><br>
             </div>
         </div>
-    </div>
-</div>
+    </nb-card-body>
+</nb-card>

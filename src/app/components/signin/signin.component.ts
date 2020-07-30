@@ -1,7 +1,10 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import {  Routes } from '@angular/router';
-import { NbAuthComponent, NbAuthService, NbLoginComponent, NbLogoutComponent } from '@nebular/auth';  // <---
+import { Routes } from '@angular/router';
+import { NbLoginComponent } from '@nebular/auth';  // <---
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
+import { TemplateRef } from '@angular/core';
+import { SignupComponent } from '../signup/signup.component';
 
 @Component({
   selector: 'app-signin',
@@ -21,7 +24,10 @@ export class SigninComponent extends NbLoginComponent implements OnInit {
   rememberMe: boolean;
   showPassword: Boolean;
 
-  constructor(private authService: AuthService){
+  constructor(private authService: AuthService,
+    private dialogService: NbDialogService,
+    protected dialogRef: NbDialogRef<any>
+  ) {
     super();
     this.showPassword = false;
   }
@@ -30,13 +36,13 @@ export class SigninComponent extends NbLoginComponent implements OnInit {
     // throw new Error("Method not implemented.");
   }
 
-  login(){
-    this.authService.signIn(this.user).subscribe(resp=>{
-       localStorage.setItem('session-init',JSON.stringify({
-         "email":this.user.email
-       }))
+  login() {
+    this.authService.signIn(this.user).subscribe(resp => {
+      localStorage.setItem('session-init', JSON.stringify({
+        "email": this.user.email
+      }))
       // this.router.navigate(['/dashboard'])
-    },err =>{ console.log(err)})
+    }, err => { console.log(err) })
   }
 
   getInputType() {
@@ -44,6 +50,11 @@ export class SigninComponent extends NbLoginComponent implements OnInit {
       return 'text';
     }
     return 'password';
+  }
+
+  redirectToRegister() {
+    this.dialogRef.close();
+    this.dialogService.open(SignupComponent, {hasBackdrop:true }); // este es prueba con datos desde el ts
   }
 
   toggleShowPassword() {

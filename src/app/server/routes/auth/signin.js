@@ -1,7 +1,6 @@
 const crypto = require("../../helper/crypto");
 const database = require('../../config/database')
 const jwt = require("jsonwebtoken");
-const { query } = require("express");
 const secret = require("../../config/config").secret;
 
 async function signin(req, res) {
@@ -9,7 +8,7 @@ async function signin(req, res) {
     email,
     password
   } = req.body;
-  query=""
+  query="select username from dba_users"
 
   /** VALIDACIONES DE INGRESO EN FORMA DE READ*/
 

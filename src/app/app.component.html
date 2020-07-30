@@ -59,7 +59,7 @@
           </nb-action>
         </nb-actions>
         <button nbButton ghost shape="round" status="success" nbPopover="Iniciar sesion" nbPopoverPlacement="bottom"
-          nbPopoverTrigger="hint" size="giant" (click)="open(login)">
+          nbPopoverTrigger="hint" size="giant" (click)="open()">
           <nb-icon icon="log-in-outline"></nb-icon>
         </button>
       </div>
@@ -93,10 +93,3 @@
 
 <!-- TEMPLATES FOR GUI -->
 
-<ng-template #login>
-  <nb-card>
-    <nb-card-body>
-      <app-signin></app-signin>
-    </nb-card-body>
-  </nb-card>
-</ng-template>
