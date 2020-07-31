@@ -2,7 +2,10 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 90%;
+  border-radius: 0%;
 }
+
 
 .cards-list {
   z-index: 0;

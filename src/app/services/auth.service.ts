@@ -10,13 +10,13 @@ export class AuthService {
   connection: any
   private URL = "http://localhost:3300/api"; //aqui me conecto con el servidor de nodeJS en el cual en la ruta tal esta la conexion con la base de datos
   constructor(private http: HttpClient, private router: Router) {}
-  hola = "hola"
+
   signUp(user) {
     return this.http.post<any>(this.URL + `/signup`, user);
   }
 
   signIn(user) {
-    return this.http.post<any>(this.URL + `/signin/?value=${this.hola}`, user);
+    return this.http.post<any>(this.URL + `/signin`, user);
   }
 
   logger(): Boolean {
@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("token");
-    this.router.navigate(["/signin"]);
+    localStorage.removeItem("session-data");
+    window.location.reload()
   }
 }

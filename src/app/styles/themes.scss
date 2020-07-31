@@ -2,6 +2,12 @@
 @import '~@nebular/theme/styles/theming';
 // @nebular out of the box themes
 @import '~@nebular/theme/styles/themes';
+@import '~@nebular/theme/styles/themes/default';
+
+$nb-themes: nb-register-theme((
+  text-basic-color: color-basic-800, // some styles we changed
+  text-disabled-color: color-basic-600,
+), default, default);
 
 $nb-themes: nb-register-theme((
   layout-padding-top: 2.25rem,

@@ -8,12 +8,14 @@
             <img src="../assets/log_ajustado.png" alt="Logo SO_ECOMMERCE" /></a>
         </div>
       </div>
-
-      <div class="col-md-6">
+      <div class="col-md-3">
         <button nbButton ghost size="giant">
           <a style="text-decoration: none; cursor: pointer;" routerLink="/dashboard">SO! E-COMMERCE</a>
         </button>
-        <button nbButton size="giant" shape="round" ghost nbPopoverPlacement="bottom" (click)="addMenuItem()"
+      </div>
+
+      <div class="col-md-3 justify-content-end" *ngIf="user.role==='Administrador'">
+        <button nbButton size="giant" status="success" shape="round" ghost nbPopoverPlacement="bottom" (click)="addMenuItem()"
           nbPopover="Añadir" nbPopoverTrigger="hint">
           <nb-icon icon="plus-outline" [options]="{ animation: { type: 'zoom' } }"></nb-icon>
         </button>
@@ -36,14 +38,15 @@
             </nb-action>
 
             <nb-action class="user-action">
-              <nb-user [nbContextMenu]="opciones" name="faustino" title="faustino" nbContextMenuTag="my-context-menu">
+              <nb-user [nbContextMenu]="opciones" name="{{user.username}}" title="{{user.role}}"
+                nbContextMenuTag="myMenu">
               </nb-user>
             </nb-action>
           </nb-actions>
         </div>
 
         <div class="col-md-1">
-          <button nbButton ghost status="danger">
+          <button nbButton ghost status="danger" (click)="logout()">
             <nb-icon icon="log-out-outline"></nb-icon>
           </button>
         </div>
@@ -92,4 +95,3 @@
 </nb-layout>
 
 <!-- TEMPLATES FOR GUI -->
-

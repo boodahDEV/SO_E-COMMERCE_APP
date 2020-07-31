@@ -1,0 +1,26 @@
+<!-- <nb-card>
+    <nb-card-body> -->
+<img src="../../../assets/ecommerce_animations_iii.gif" class="center"> <br><br>
+<h3 id="title" class="title center_body">Acciones para añadir</h3>
+<p class="sub-title center_body">Las acciones solo estan funcionales para el admin.</p>
+
+<div class="row justify-content-center">
+    <nb-select shape="round" placeholder="none" filled status="success" [(selected)]="selectedItem"
+        (selectedChange)="getAdd($event)" autocomplete="off">
+        <nb-option value="inventario">Inventario</nb-option>
+        <nb-option [value]="1">Producto</nb-option>
+        <nb-option [value]="2">Categoria</nb-option>
+        <nb-option [value]="3">Proveedor</nb-option>
+        <!-- <nb-option [value]="4"></nb-option> -->
+    </nb-select>
+</div>
+<br>
+<div class="row justify-content-center">
+    <button nbButton size="giant" shape="round" status="success" ghost nbPopoverPlacement="bottom"
+        nbPopover="Crear nuevo item en la accion" nbPopoverTrigger="hint">
+        <nb-icon icon="arrow-ios-forward-outline" [options]="{ animation: { type: 'zoom' } }"></nb-icon>
+    </button>
+</div>
+
+<!-- </nb-card-body>
+</nb-card> -->

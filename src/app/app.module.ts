@@ -21,6 +21,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChestConfigComponent } from './components/chest-config/chest-config.component';
 import { ChestInfoComponent } from './components/chest-info/chest-info.component';
 import { NbAuthModule } from '@nebular/auth';
+import { CategoryProductComponent } from './components/category-product/category-product.component';
+import { AddAcctionComponent } from './components/add-acction/add-acction.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { NbAuthModule } from '@nebular/auth';
     PrivateChestsComponent,
     ChestConfigComponent,
     ChestInfoComponent,
+    CategoryProductComponent,
+    AddAcctionComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,11 +68,11 @@ import { NbAuthModule } from '@nebular/auth';
   providers: [
     AuthGuard,
     {
-      provide: HTTP_INTERCEPTORS,
+      provide: HTTP_INTERCEPTORS, 
       useClass: TokenInterceptorService,
       multi: true
     },
-    NbSidebarService
+    NbSidebarService,
   ],
   bootstrap: [AppComponent]
 })

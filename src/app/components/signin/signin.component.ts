@@ -1,10 +1,11 @@
 import { Component, OnInit, NgModule, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Routes } from '@angular/router';
+import { Router } from '@angular/router';
 import { NbLoginComponent } from '@nebular/auth';  // <---
 import { NbDialogRef, NbDialogService } from '@nebular/theme';
-import { TemplateRef } from '@angular/core';
 import { SignupComponent } from '../signup/signup.component';
+import Swal from 'sweetalert2';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-signin',
@@ -26,7 +27,8 @@ export class SigninComponent extends NbLoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private dialogService: NbDialogService,
-    protected dialogRef: NbDialogRef<any>
+    protected dialogRef: NbDialogRef<any>,
+    public router: Router
   ) {
     super();
     this.showPassword = false;
@@ -38,10 +40,19 @@ export class SigninComponent extends NbLoginComponent implements OnInit {
 
   login() {
     this.authService.signIn(this.user).subscribe(resp => {
-      localStorage.setItem('session-init', JSON.stringify({
-        "email": this.user.email
-      }))
-      // this.router.navigate(['/dashboard'])
+      localStorage.setItem('session-data', JSON.stringify(resp))
+      Swal.fire({
+        title: "Inicio correcto",
+        text: `Bienvenido ${resp.username}!`,
+        timer: 1000,
+        icon: "success",
+        showConfirmButton: false,
+      });
+      window.location.reload()
+      setTimeout(() => {
+        // this.router.navigate(['/dashboard'])
+        this.dialogRef.close();
+      }, 1000);
     }, err => { console.log(err) })
   }
 
@@ -60,4 +71,5 @@ export class SigninComponent extends NbLoginComponent implements OnInit {
   toggleShowPassword() {
     this.showPassword = !this.showPassword;
   }
+
 }
