@@ -1,0 +1,99 @@
+ID del primer inventario: 133198
+ID del segundo inventario: 186692
+//////////////////////////////////////////////////////////////////
+Descripción = Las regiones donde se puede distribuir el producto.
+Regiones:
+133198 = EUROPA OCCIDENTAL
+EUROPA ORIENTAL
+ASIA
+186692 = NORTEAMERICA
+AMERICA CENTRAL
+SURAMERICA
+//////////////////////////////////////////////////////////////////
+ID de ṕroductos y que son:
+145598 = Motherboard. Marca: ASUS. Modelo: TUF GAMING Z490 PLUS
+159201 = Memoria RAM. Marca: Crucial. Modelo: DDR4 4GB UDIMM PC4-21300
+183557 = Teclado. Marca: Razer. Modelo: BlackWidow Elite
+198953 = Bocinas. Marca: Anlix. Modelo: SP-2060
+127546 = WEBCAM IMI W88H
+125467 = BATTERY BACKUP TRIPP
+132456 = MOUSE PAD RAZER
+156785 = GIGABYTE AORUS P850W
+151234 = GIGABYTE AORUS P750W
+151234 = CORSAIR AX1200I
+175467 = AMD RYZEN 7 3800X
+171576 = INTEL CELERON G4930
+
+12 
+accesorios
+Fuentes de alimentacion
+procesadores
+motherboard
+memorias
+perifericos
+
+
+todos los tipos de producto
+y otra que traiga el tipo de producto en especifico
+//////////////////////////////////////////////////////////////////
+ID de direcciones relacionadas con el ID de inventario
+151687 = 133198
+200747 = 186692
+//////////////////////////////////////////////////////////////////
+ID Proveedores
+AOC = 163266
+Lenovo = 169363
+HP = 189668
+//////////////////////////////////////////////////////////////////
+ID Tipo de proveedor
+Monitores = 222285
+Laptops = 252210
+Ordanoderes = 271623
+//////////////////////////////////////////////////////////////////
+ID Metodo de transporte
+Camion = 225311
+//////////////////////////////////////////////////////////////////
+ID Direccion del proveedor
+246070 = AOC
+268815 = Lenovo
+287664 = HP
+//////////////////////////////////////////////////////////////////
+ID Tipo de producto y su relacion con el producto en cuestion
+150144 = 145598
+182963 = 159201
+209001 = 198953, 183557
+
+127456 = 127546, 125467, 132456
+135412 = 156785, 153576, 151234
+179850 = 171345, 175467, 171576
+//////////////////////////////////////////////////////////////////
+ID de Usuario por nombre
+MARTA FLORES = 335064 -> Contrasena = dingo33
+CARLOS JIMENEZ = 337760 -> Contrasena = jim123
+MARCOS GONZALES = 350960 -> Contrasena = gmarco00
+//////////////////////////////////////////////////////////////////
+ID Informacion del usuario
+394273 = MARTA FLORES INFO
+410999 = CARLOS JIMENEZ INFO
+421321 = MARCOS GONZALES INFO
+//////////////////////////////////////////////////////////////////
+ID de clientes segun usuario
+352561 = MARTA FLORES
+358573 = CARLOS JIMENEZ
+368244 = MARCOS GONZALES
+//////////////////////////////////////////////////////////////////
+TIPOS DE CLIENTES
+Coorporativo = 375102
+Privado = 375347
+//////////////////////////////////////////////////////////////////
+
+CATEGORIAS:
+'MONITOR'
+'LAPTOP'
+'ALL IN ONE'
+'ACCESORIOS'
+'FUENTE DE PODER'
+'PROCESADOR'
+'MOTHERBOARD'
+'MEMORIAS'
+'PERIFERICOS'
