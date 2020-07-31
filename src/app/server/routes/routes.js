@@ -56,4 +56,8 @@ router.get("/categoria/", (req, res) => { // /ESTA URL ES PARA TRAER TODOS LAS C
 
 })
 
+router.post("/categoria/:id",(req, res)=>{ // TRAE UNA CATEGORIA EN ESPECIFICO O TIPO DE PRODUCTO
+
+})
+
 module.exports = router; // al final exporto las rutas al index principal

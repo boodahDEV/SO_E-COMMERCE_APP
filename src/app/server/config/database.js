@@ -6,8 +6,8 @@ async function connect_database_oracle() {
     var connection;
     try {
       connection = oracledb.getConnection({
-        user: 'system',
-        password: 'sql',
+        user: 'ADMIN_DB',
+        password: 'ecommerce',
         connectString: 'localhost/XE'
       })
       console.log("\x1b[42mORACLE\x1b[0m -> [\x1b[32mconnected successfully\x1b[0m]");
