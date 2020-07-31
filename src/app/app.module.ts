@@ -23,6 +23,9 @@ import { ChestInfoComponent } from './components/chest-info/chest-info.component
 import { NbAuthModule } from '@nebular/auth';
 import { CategoryProductComponent } from './components/category-product/category-product.component';
 import { AddAcctionComponent } from './components/add-acction/add-acction.component';
+import { ProductComponent } from './components/product/product.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
+import { SupplierComponent } from './components/supplier/supplier.component';
 
 
 @NgModule({
@@ -38,6 +41,9 @@ import { AddAcctionComponent } from './components/add-acction/add-acction.compon
     ChestInfoComponent,
     CategoryProductComponent,
     AddAcctionComponent,
+    ProductComponent,
+    InventoryComponent,
+    SupplierComponent,
   ],
   imports: [
     BrowserModule,

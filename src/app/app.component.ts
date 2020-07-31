@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
   opciones = [
     { title: 'Configurar', icon: 'settings-2-outline' },
-    { title: 'Salir', icon: 'log-out-outline'},
+    { title: 'Salir', icon: 'log-out-outline' },
   ]; //este campo mantiene las opciones basicas de configuracion del usuario
 
 
@@ -41,8 +41,8 @@ export class AppComponent implements OnInit {
     private nbMenuService: NbMenuService,
     private dialogService: NbDialogService,
   ) {
-    this.user = {email:'',username:'', id:'',role:'none'};
-    if (localStorage || this.user==null) {
+    this.user = { email: '', username: '', id: '', role: 'none' };
+    if (localStorage || this.user == null) {
       setTimeout(() => {
         for (const key in localStorage) {
           if (localStorage.hasOwnProperty(key) && key === "session-data") {
@@ -56,16 +56,14 @@ export class AppComponent implements OnInit {
     //ESTO BUSCA EN EL MENUITEMS EL TITULO EN ESPECIFICO Y CARGA LO QUE ESTA EN EL LOCAL HOST
     //CON UNA LLAVE EN ESPECIFICO, A DICHO MENUITEMS
     this.items.forEach((res) => {
-      if (res.title === "Baules") {
-        if (res.children) {
-          for (const key in localStorage) {
+      for (const key in localStorage) {
+        if (res.title === key.split("-")[1]) {
+          if (res.children) {
             if (
-              localStorage.hasOwnProperty(key) &&
-              key.split("-")[1] === "chest"
+              localStorage.hasOwnProperty(key)
             ) {
               if (res.children) {
                 res.children.push(JSON.parse(localStorage[key]));
-                console.log("ok?");
               }
             }
           }
@@ -74,7 +72,7 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    
+
   }
 
 
@@ -89,49 +87,6 @@ export class AppComponent implements OnInit {
 
   public async addMenuItem() {
     this.dialogService.open(AddAcctionComponent, { hasBackdrop: true, closeOnBackdropClick: true }); // este es prueba con datos desde el ts
-
-
-    // const { value: chestName } = await Swal.fire({
-    //   title: "Ingrese la accion a Añadir",
-    //   input: "text",
-    //   icon: "info",
-    //   showCancelButton: true,
-    //   inputValidator: (value) => {
-    //     if (!value) {
-    //       return "Debe especificar una accion por lo menos!";
-    //     }
-    //   },
-    // });
-
-    // if (chestName) {
-    //   var basic_chest: NbMenuItem = {
-    //     title: "" + chestName,
-    //     icon: "archive-outline",
-    //     selected: false,
-    //     link: "/chestInfo",
-    //   };
-
-    //   localStorage.setItem(
-    //     "new-chest-" + this.count++,
-    //     JSON.stringify(basic_chest)
-    //   );
-    //   this.local$.next(basic_chest);
-
-    //   this.items.forEach((res) => {
-    //     if (res.title === "Baules") {
-    //       this.router.navigate(["/chest"]);
-    //       res.children.push(basic_chest);
-    //     }
-    //   });
-
-    //   Swal.fire({
-    //     title: "Baúl creado!",
-    //     text: "El baúl fue creado con exito, click en el para configurar.",
-    //     timer: 2000,
-    //     icon: "success",
-    //     showConfirmButton: false,
-    //   });
-    // }
   }
 
   redirect(to: string) {
@@ -142,7 +97,7 @@ export class AppComponent implements OnInit {
     return this.local$.asObservable();
   }
 
-  logout(){
+  logout() {
     this.auth.logout();
   }
 }
