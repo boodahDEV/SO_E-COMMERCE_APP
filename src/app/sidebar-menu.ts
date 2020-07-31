@@ -28,7 +28,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
-    title:'Categorias producto',
+    title:'Categorias',
     // link:'/chest',
     selected:false,
     icon: 'grid-outline',

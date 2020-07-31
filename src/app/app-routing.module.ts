@@ -10,6 +10,10 @@ import { ChestComponent } from "./components/chest/chest.component";
 import { PrivateChestsComponent } from "./components/private-chests/private-chests.component";
 import { ChestInfoComponent } from './components/chest-info/chest-info.component';
 import { NbLoginComponent } from '@nebular/auth';
+import { CategoryProductComponent } from './components/category-product/category-product.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
+import { SupplierComponent } from './components/supplier/supplier.component';
+import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
   {
@@ -28,26 +32,34 @@ const routes: Routes = [
   },
   {
     path:'product',
-    component:ChestComponent,
+    component:ProductComponent,
     // canActivate:[AuthGuard]
   },
   {
     path:'category',
-    component:ChestInfoComponent,
+    component:CategoryProductComponent,
+  },
+  {
+    path:'inventory',
+    component:InventoryComponent,
+  },
+  {
+    path:'supplier',
+    component:SupplierComponent,
   },
   // {
   //   path:'private-chest',
   //   component:PrivateChestsComponent,
   //   canActivate:[AuthGuard]
   // },
-  {
-    path:'signup',
-    component:SignupComponent
-  },
-  {
-    path:'signin',
-    component:SigninComponent
-  }
+  // {
+  //   path:'signup',
+  //   component:SignupComponent
+  // },
+  // {
+  //   path:'signin',
+  //   component:SigninComponent
+  // }
 ];
 
 @NgModule({
