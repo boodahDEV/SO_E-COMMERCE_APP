@@ -5,9 +5,9 @@
 <p class="sub-title center_body">Las acciones solo estan funcionales para el admin.</p>
 
 <div class="row justify-content-center">
-    <nb-select shape="round" placeholder="none" filled status="success" [(selected)]="selectedItem"
-        (selectedChange)="getAdd($event)" autocomplete="off">
-        <nb-option value="inventario">Inventario</nb-option>
+    <nb-select shape="round" placeholder="--" filled status="success" [(selected)]="selectedItem"
+        (selectedChange)="getAdd($event)">
+        <nb-option [value]='0'>Inventario</nb-option>
         <nb-option [value]="1">Producto</nb-option>
         <nb-option [value]="2">Categoria</nb-option>
         <nb-option [value]="3">Proveedor</nb-option>
