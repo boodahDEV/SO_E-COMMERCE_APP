@@ -67,17 +67,13 @@ export class AddAcctionComponent implements OnInit {
     });
 
     if (name_service) {
-      var data: NbMenuItem = {
+      var data: any = {
         title: "" + name_service,
         icon: "file-outline",
         selected: false,
         link: '',
       };
 
-      localStorage.setItem(
-        `new-${item}-` + this.count++,
-        JSON.stringify(data)
-      );
       // this.local$.next(basic_chest);
 
       this.items.forEach((res) => {
@@ -91,12 +87,13 @@ export class AddAcctionComponent implements OnInit {
             case "Productos":
               this.router.navigate([`/product`]);
               data.link = "/product";
-              res.children.push(data);
+              data.id = Math.floor(Math.random() * (99999 - 10000) + 10000); 
               break;
             case "Categorias":
               this.router.navigate([`/category`]);
               data.link = "/category";
-              res.children.push(data);
+              data.id = Math.floor(Math.random() * (99999 - 10000) + 10000); 
+              // res.children.push(data);
               break;
             case "Proveedores":
               this.router.navigate([`/supplier`]);
@@ -108,7 +105,14 @@ export class AddAcctionComponent implements OnInit {
           }
         }
       });
+
+      localStorage.setItem(
+        `new-${item}-` + this.count++,
+        JSON.stringify(data)
+      );
+      window.location.reload()
       this.dialogRef.close();
+      console.log(data)
       Swal.fire({
         title: `${item} creado!`,
         text: `El ${item} fue creado con exito, click en el para configurar.`,
@@ -118,4 +122,5 @@ export class AddAcctionComponent implements OnInit {
       });
     }
   }
+  
 }

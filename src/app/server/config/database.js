@@ -1,6 +1,7 @@
 var oracledb = require('oracledb');
 
 
+
 async function connect_database_oracle() {
   var conexion = await new Promise((resolve, reject) => {
     var connection;
@@ -8,7 +9,11 @@ async function connect_database_oracle() {
       connection = oracledb.getConnection({
         user: 'ADMIN_DB',
         password: 'ecommerce',
-        connectString: 'localhost/XE'
+        connectString: 'localhost/XE',
+        poolMax:          44,
+        poolMin:          2,
+        poolIncrement:    5,
+        poolTimeout:      4
       })
       console.log("\x1b[42mORACLE\x1b[0m -> [\x1b[32mconnected successfully\x1b[0m]");
       resolve(connection)
@@ -20,5 +25,13 @@ async function connect_database_oracle() {
 
   return conexion
 }//fin de la funcion de conexion
+var conn = []
+
+function exportConnect(conexion) {
+  conn.push(conexion)
+  return conexion
+}
 
 exports.connect = connect_database_oracle;
+exports.ToEvent = exportConnect;
+exports.value = conn;

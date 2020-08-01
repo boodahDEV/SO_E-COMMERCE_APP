@@ -19,6 +19,18 @@ export class AuthService {
     return this.http.post<any>(this.URL + `/signin`, user);
   }
 
+  getAllProducts(user){
+    return this.http.post<any>(this.URL + "/producto", user );
+  }
+
+  getAllCategorys(user){
+    return this.http.post<any>(this.URL + "/categoria", user );
+  }
+
+  getProdutsByCategory(user){
+    return this.http.post<any>(this.URL + `/producto/${user}`, user );
+  }
+
   logger(): Boolean {
     if(!!sessionStorage.getItem("session-data") && JSON.parse(sessionStorage.getItem('session-data')).role === 'Administrador'){
       return true
@@ -35,7 +47,7 @@ export class AuthService {
     // Errores para el manejo de token por el headers
   }
 
-  logout() {
+  logout(users) {
     sessionStorage.removeItem("session-data");
     window.location.reload()
   }

@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   submitted: boolean;
   status_login: Boolean; //ESTE CAMPO CONTROLA LAS OPCIONES DE SESION
   private local$ = new Subject<any>();
-
+  status_load_db: Boolean
   opciones = [
     { title: 'Configurar', icon: 'settings-2-outline' },
     { title: 'Salir', icon: 'log-out-outline' },
@@ -42,10 +42,11 @@ export class AppComponent implements OnInit {
     private nbMenuService: NbMenuService,
     private dialogService: NbDialogService,
   ) {
+    this.verificaStorage();
     this.user = { email: '', username: '', id: '', role: 'none' };
     if (localStorage || this.user == null) {
       setTimeout(() => {
-        for (const key in localStorage) {
+        for (const key in sessionStorage) {
           if (sessionStorage.hasOwnProperty(key) && key === "session-data") {
             this.user = JSON.parse(sessionStorage.getItem("session-data"));
             this.status_login = true
@@ -60,9 +61,10 @@ export class AppComponent implements OnInit {
       if (this.auth.logger()) { //si es admin el que se logea, carga datos al sidebar
         for (const key in localStorage) {
           if (res.title === key.split("-")[1]) {
+            console.log(key.split("-")[1])
             if (res.children) {
               if (
-                localStorage.hasOwnProperty(key)
+                localStorage.hasOwnProperty(key) && res.title !== 'Productos'
               ) {
                 res.children.push(JSON.parse(localStorage[key]));
               }
@@ -98,6 +100,10 @@ export class AppComponent implements OnInit {
   }
 
   redirect(to: string) {
+    this.items.forEach((res) => {
+      if(res.title === to)
+        res.expanded = true
+    })
     this.router.navigate(["/" + to]);
   }
 
@@ -106,6 +112,18 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout();
+    
+    this.auth.logout(this.user);
+  }
+
+  
+  verificaStorage(){
+    if (localStorage) {
+      for (const key in localStorage) {
+        if (localStorage.hasOwnProperty(key) && key.split("-")[0] === "new" || key.split("-")[0]==="edit") {
+          this.status_load_db = true;
+        } 
+      }
+    }
   }
 }

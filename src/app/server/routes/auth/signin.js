@@ -1,7 +1,9 @@
 const crypto = require("../../helper/crypto");
 const database = require('../../config/database')
 const secret = require("../../config/config").secret;
-const Swal = require("sweetalert2")
+const Swal = require("sweetalert2");
+const OracleDB = require("oracledb");
+
 
 async function signin(req, res) {
   const {
@@ -16,16 +18,16 @@ async function signin(req, res) {
     
     )
   `
-
-
+  
   /** VALIDACIONES DE INGRESO EN FORMA DE READ*/
 
   var result_query = await new Promise((resolve, reject) => {
-    database.connect().then(consulta => {
+    database.value[0].then(consulta => {
       consulta.execute(query,
         [],
         function (err, result) {
           if (err) {
+            console.log("1:" + err.message)
             res.status(500).send(err.message);
             return;
           }
@@ -40,7 +42,6 @@ async function signin(req, res) {
               }
             )
           });
-
         });
     })
   });

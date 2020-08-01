@@ -54,6 +54,9 @@ export class SigninComponent extends NbLoginComponent implements OnInit {
         this.dialogRef.close();
       }, 1000);
     }, err => { console.log(err) })
+    setTimeout(() => {
+      this.authService.signIn(this.user).subscribe().unsubscribe();
+    }, 1500);
   }
 
   getInputType() {

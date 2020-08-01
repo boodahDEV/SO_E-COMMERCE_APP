@@ -14,6 +14,7 @@ import { CategoryProductComponent } from './components/category-product/category
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { SupplierComponent } from './components/supplier/supplier.component';
 import { ProductComponent } from './components/product/product.component';
+import { CategoiaPorProductoComponent } from './components/categoia-por-producto/categoia-por-producto.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path:'category',
     component:CategoryProductComponent,
+  },
+  {
+    path:'category/:id/:id2',
+    component:CategoiaPorProductoComponent,
   },
   {
     path:'inventory',

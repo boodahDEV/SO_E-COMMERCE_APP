@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
 import { TasksService } from 'src/app/services/tasks.service';
+import { TrafficBar, TrafficBarData } from './traffic-bar';
+import { TrafficList, TrafficListData } from './traffic-list';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +11,9 @@ import { TasksService } from 'src/app/services/tasks.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private taskservice: TasksService) { }
+  constructor() {
+
+     }
 
   ngOnInit(): void {
   }

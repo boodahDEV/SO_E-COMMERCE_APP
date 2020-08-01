@@ -29,19 +29,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title:'Productos',
     selected:false,
     icon: 'shopping-cart-outline',
-    expanded: true,
-    children:[
-      
-    ]
+    link: '/product',
   },
   {
     title:'Categorias',
     selected:false,
     icon: 'grid-outline',
     expanded: true,
-    children:[
-      
-    ]
+    link:'/category'
   },
   {
     title:'Mis compras',
