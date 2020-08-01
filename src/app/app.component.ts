@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
     id: string,
     role: string
   };
+  admin_option_sidebar = ['Inventario', 'Proveedores']
   submitted: boolean;
   status_login: Boolean; //ESTE CAMPO CONTROLA LAS OPCIONES DE SESION
   private local$ = new Subject<any>();
@@ -45,8 +46,8 @@ export class AppComponent implements OnInit {
     if (localStorage || this.user == null) {
       setTimeout(() => {
         for (const key in localStorage) {
-          if (localStorage.hasOwnProperty(key) && key === "session-data") {
-            this.user = JSON.parse(localStorage.getItem("session-data"));
+          if (sessionStorage.hasOwnProperty(key) && key === "session-data") {
+            this.user = JSON.parse(sessionStorage.getItem("session-data"));
             this.status_login = true
             console.log(this.user)
           }
@@ -56,18 +57,25 @@ export class AppComponent implements OnInit {
     //ESTO BUSCA EN EL MENUITEMS EL TITULO EN ESPECIFICO Y CARGA LO QUE ESTA EN EL LOCAL HOST
     //CON UNA LLAVE EN ESPECIFICO, A DICHO MENUITEMS
     this.items.forEach((res) => {
-      for (const key in localStorage) {
-        if (res.title === key.split("-")[1]) {
-          if (res.children) {
-            if (
-              localStorage.hasOwnProperty(key)
-            ) {
-              if (res.children) {
+      if (this.auth.logger()) { //si es admin el que se logea, carga datos al sidebar
+        for (const key in localStorage) {
+          if (res.title === key.split("-")[1]) {
+            if (res.children) {
+              if (
+                localStorage.hasOwnProperty(key)
+              ) {
                 res.children.push(JSON.parse(localStorage[key]));
               }
             }
           }
         }
+      } else {
+        //si no!
+        this.admin_option_sidebar.filter((element, index, array) => {
+          if (res.title === element) {
+            console.log(res.hidden = true)
+          }
+        });
       }
     });
   }

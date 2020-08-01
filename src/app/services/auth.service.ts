@@ -20,7 +20,12 @@ export class AuthService {
   }
 
   logger(): Boolean {
-    return !!localStorage.getItem("token");
+    if(!!sessionStorage.getItem("session-data") && JSON.parse(sessionStorage.getItem('session-data')).role === 'Administrador'){
+      return true
+    }else{
+      return false
+    }
+    return false;
   }
 
   getToken() {
@@ -31,7 +36,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("session-data");
+    sessionStorage.removeItem("session-data");
     window.location.reload()
   }
 }

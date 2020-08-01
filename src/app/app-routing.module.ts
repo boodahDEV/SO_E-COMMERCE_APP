@@ -42,10 +42,13 @@ const routes: Routes = [
   {
     path:'inventory',
     component:InventoryComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'supplier',
     component:SupplierComponent,
+    canActivate:[AuthGuard]
+
   },
   // {
   //   path:'private-chest',

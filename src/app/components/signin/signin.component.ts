@@ -40,7 +40,7 @@ export class SigninComponent extends NbLoginComponent implements OnInit {
 
   login() {
     this.authService.signIn(this.user).subscribe(resp => {
-      localStorage.setItem('session-data', JSON.stringify(resp))
+      sessionStorage.setItem('session-data', JSON.stringify(resp))
       Swal.fire({
         title: "Inicio correcto",
         text: `Bienvenido ${resp.username}!`,

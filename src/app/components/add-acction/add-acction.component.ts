@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class AddAcctionComponent implements OnInit {
   selectedItem: any
   count = localStorage.length + 1;
-  type_add_item:string
+  type_add_item: string
   items = MENU_ITEMS;
 
   constructor(
@@ -58,9 +58,9 @@ export class AddAcctionComponent implements OnInit {
       icon: "info",
       showCancelButton: true,
       inputValidator: (value) => {
-        if (!value ) {
+        if (!value) {
           return "Para crearlo, debe por lo menos especificar el nombre correctamente.";
-        }else if(value.length > 20){
+        } else if (value.length > 20) {
           return `El nombre de ${item} no debe ser mayor a 20 caracteres, favor corregir.`;
         }
       },
@@ -85,18 +85,22 @@ export class AddAcctionComponent implements OnInit {
           switch (item) {
             case "Inventario":
               this.router.navigate([`/inventory`]);
+              data.link = "/inventory";
               res.children.push(data);
-            break;
+              break;
             case "Productos":
               this.router.navigate([`/product`]);
+              data.link = "/product";
               res.children.push(data);
               break;
             case "Categorias":
               this.router.navigate([`/category`]);
+              data.link = "/category";
               res.children.push(data);
               break;
             case "Proveedores":
               this.router.navigate([`/supplier`]);
+              data.link = "/supplier";
               res.children.push(data);
               break;
             default:

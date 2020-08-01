@@ -9,7 +9,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title:'Inventario',
-    // link:'/chest',
     selected:false,
     icon: 'file-text-outline',
     expanded: true,
@@ -18,8 +17,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
+    title:'Proveedores',
+    selected:false,
+    icon: 'car-outline',
+    expanded: true,
+    children:[
+      
+    ]
+  },
+  {
     title:'Productos',
-    // link:'/chest',
     selected:false,
     icon: 'shopping-cart-outline',
     expanded: true,
@@ -29,7 +36,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title:'Categorias',
-    // link:'/chest',
     selected:false,
     icon: 'grid-outline',
     expanded: true,
@@ -39,12 +45,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title:'Mis compras',
-    // link:'/chest',
+    // link:'/chest',car-outline
     selected:false,
     icon: 'bookmark-outline',
     expanded: true,
     children:[
       
-    ]
+    ],
   }
 ];
